@@ -1,0 +1,200 @@
+@layer components {
+  .week-nav {
+    @apply flex items-center gap-2;
+  }
+
+  .week-nav-label {
+    @apply font-semibold text-[0.9375rem] min-w-[160px] text-center;
+  }
+
+  .board-header {
+    @apply flex items-center justify-between mb-3 gap-4 flex-wrap;
+  }
+
+  /* The section IS the scroll container */
+  .board-calendar {
+    @apply border border-border bg-surface select-none overflow-auto;
+    max-height: calc(100vh - 160px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  /* Ensure head and body have the same min-width so columns align during horizontal scroll */
+  .board-head,
+  .board-body {
+    min-width: 748px; /* 48px time col + 7 × 100px day cols */
+  }
+
+  .board-calendar::-webkit-scrollbar { width: 6px; height: 6px; }
+  .board-calendar::-webkit-scrollbar-track { background: transparent; }
+  .board-calendar::-webkit-scrollbar-thumb { @apply bg-border rounded; }
+  .board-calendar::-webkit-scrollbar-button { display: none; }
+
+  /* Sticky header row */
+  .board-head {
+    @apply flex h-10 border-b border-border bg-bg sticky top-0 z-10 shrink-0;
+  }
+
+  .board-head-spacer {
+    @apply w-12 shrink-0 border-r border-border;
+  }
+
+  .board-head-days {
+    @apply flex-1 grid grid-cols-7;
+  }
+
+  .board-day-header {
+    @apply flex items-center justify-between px-2.5 text-xs font-semibold text-text-muted border-r border-border;
+  }
+
+  .board-day-header:last-child {
+    @apply border-r-0;
+  }
+
+  .board-day-header.is-today {
+    @apply text-primary bg-primary-light;
+  }
+
+  .board-day-header .day-title {
+    @apply flex items-baseline gap-1;
+  }
+
+  .board-day-header .day-label {
+    @apply text-center;
+  }
+
+  .board-day-header .day-num {
+    @apply text-[0.6875rem] font-bold text-text;
+  }
+
+  .board-day-header.is-today .day-num {
+    @apply text-primary;
+  }
+
+  .board-day-header .day-hours {
+    @apply text-[0.625rem] font-normal text-text-muted opacity-70 whitespace-nowrap;
+  }
+
+  /* Body: time ruler + columns */
+  .board-body {
+    @apply flex;
+  }
+
+  .board-time-col {
+    @apply w-12 shrink-0 relative border-r border-border bg-bg;
+    height: 960px;
+  }
+
+  .board-hour-label {
+    @apply absolute right-1.5 text-[0.625rem] text-text-muted whitespace-nowrap leading-none -translate-y-1/2;
+  }
+
+  .board-days-grid {
+    @apply flex-1 flex;
+  }
+
+  .board-day-col {
+    @apply flex-1 min-w-[100px] relative border-r border-border cursor-pointer;
+    height: 960px;
+  }
+
+  .board-day-col:last-child {
+    @apply border-r-0;
+  }
+
+  .board-day-col.is-today {
+    background: color-mix(in srgb, var(--color-primary-light) 60%, transparent);
+  }
+
+  .board-hour-line {
+    @apply absolute left-0 right-0 border-t border-border pointer-events-none;
+  }
+
+  /* Drag ghost placeholder */
+  .board-drag-preview {
+    @apply absolute left-1 right-1 rounded-sm border-2 border-dashed border-primary bg-primary-light opacity-50 pointer-events-none z-[1];
+  }
+
+  /* Floating drag overlay */
+  .board-drag-float {
+    @apply rounded-sm bg-primary text-white text-[0.6875rem] font-semibold px-2 py-1 shadow-modal flex flex-col gap-0.5;
+  }
+
+  .board-drag-float-code {
+    @apply text-[0.625rem] opacity-85;
+  }
+
+  .board-drag-float-hours {
+    @apply text-xs;
+  }
+
+  /* Worklog block */
+  .worklog-block {
+    @apply absolute left-1 right-1 min-h-5 rounded-sm border-l-[3px] bg-surface overflow-hidden cursor-grab transition-shadow;
+  }
+
+  .worklog-block:hover {
+    @apply shadow-card z-[2];
+  }
+
+  .worklog-block--dragging {
+    @apply cursor-grabbing pointer-events-none opacity-[0.35];
+  }
+
+  .worklog-block--resizing {
+    @apply cursor-ns-resize;
+  }
+
+  .worklog-block-content {
+    @apply flex flex-col gap-px overflow-hidden;
+    padding: 3px 28px 3px 6px;
+    height: 100%;
+  }
+
+  .worklog-block-code {
+    @apply text-[0.625rem] font-semibold text-text-muted leading-snug mb-[3px];
+  }
+
+  .worklog-block-title {
+    @apply text-[0.6875rem] font-medium text-text overflow-hidden whitespace-nowrap text-ellipsis leading-snug;
+  }
+
+  .worklog-block-comment {
+    @apply text-[0.625rem] text-text-muted overflow-hidden whitespace-nowrap text-ellipsis leading-snug;
+  }
+
+  .worklog-block-hours {
+    @apply text-[0.625rem] text-text-muted mt-auto leading-snug;
+  }
+
+  /* Edit / delete action buttons */
+  .worklog-btn-edit,
+  .worklog-btn-delete {
+    @apply absolute top-[3px] w-3.5 h-3.5 cursor-pointer p-0 border-0 bg-transparent text-text-muted flex items-center justify-center transition-colors;
+  }
+
+  .worklog-btn-edit {
+    @apply right-[19px] rounded-sm hover:bg-primary hover:text-white;
+  }
+
+  .worklog-btn-delete {
+    @apply right-[3px] rounded-full text-text hover:bg-danger hover:text-white;
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  /* Resize handle */
+  .worklog-resize-handle {
+    @apply absolute bottom-0 left-0 right-0 h-2 cursor-ns-resize rounded-b-sm;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));
+  }
+
+  @media (max-width: 640px) {
+    .week-nav-label {
+      @apply min-w-0 text-sm;
+    }
+
+    .board-calendar {
+      max-height: calc(100vh - 140px);
+    }
+  }
+}

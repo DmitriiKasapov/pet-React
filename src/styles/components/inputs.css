@@ -1,0 +1,49 @@
+@layer components {
+  .input {
+    @apply w-full px-3 py-2 border border-border rounded-md text-sm text-text bg-surface transition-colors outline-none;
+    font-family: inherit;
+  }
+
+  .input:focus {
+    @apply border-primary;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 15%, transparent);
+  }
+
+  .input[aria-invalid="true"],
+  .input.is-error {
+    @apply border-danger;
+  }
+
+  .input::placeholder {
+    @apply text-text-light;
+  }
+
+  textarea.input {
+    @apply resize-y;
+    min-height: 80px;
+  }
+
+  .field-label {
+    @apply block text-sm font-medium mb-1 text-text;
+  }
+
+  .field-error {
+    @apply text-[0.8125rem] text-danger mt-1;
+  }
+
+  .search-zone {
+    @apply py-3 border-y border-border flex items-center gap-3;
+  }
+
+  .search-input-wrap {
+    @apply relative flex-1;
+  }
+
+  .search-input-wrap svg {
+    @apply absolute left-2.5 top-1/2 -translate-y-1/2 text-text-muted pointer-events-none;
+  }
+
+  .search-input-wrap .input {
+    @apply pl-[34px];
+  }
+}

@@ -1,0 +1,29 @@
+# Build output
+dist/
+dist-ssr/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.idea/
+*.sublime-workspace
+.history/
+
+# VS Code (keep shared settings)
+.vscode/*
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db

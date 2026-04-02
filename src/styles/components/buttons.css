@@ -1,0 +1,26 @@
+@layer components {
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-sm font-medium border border-transparent cursor-pointer transition-colors whitespace-nowrap;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply border-border text-text hover:bg-bg;
+  }
+
+  .btn-ghost {
+    @apply text-text-muted hover:bg-bg hover:text-text;
+  }
+
+  .btn-danger {
+    @apply text-danger hover:bg-danger-bg;
+  }
+
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+}

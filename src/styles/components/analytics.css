@@ -1,0 +1,89 @@
+@layer components {
+  .analytics-grid {
+    @apply grid gap-6 grid-cols-1 sm:grid-cols-2;
+  }
+
+  .analytics-grid > *:last-child:nth-child(odd) {
+    @apply sm:col-span-2;
+  }
+
+  .summary-card {
+    @apply bg-surface border border-border rounded-md p-6;
+  }
+
+  .summary-card-title {
+    @apply text-sm font-semibold uppercase tracking-[0.05em] text-text-muted mb-4;
+  }
+
+  .summary-stat-row {
+    @apply flex items-baseline gap-2;
+  }
+
+  .summary-stat-value {
+    @apply text-[2rem] font-bold text-text leading-none;
+  }
+
+  .summary-stat-label {
+    @apply text-sm text-text-muted;
+  }
+
+  .day-bar-row {
+    @apply flex items-center gap-3 mb-2.5;
+  }
+
+  .day-bar-label {
+    @apply text-[0.8125rem] text-text-muted w-9 shrink-0;
+  }
+
+  .day-bar-track {
+    @apply flex-1 h-2 bg-border rounded overflow-hidden;
+  }
+
+  .day-bar-fill {
+    @apply h-full bg-primary rounded transition-[width] duration-300;
+  }
+
+  .day-bar-hours {
+    @apply text-[0.8125rem] text-text font-medium w-10 text-right shrink-0;
+  }
+
+  .project-bar-card {
+    @apply bg-surface border border-border rounded-md overflow-hidden mb-2;
+  }
+
+  .project-bar-content {
+    @apply px-4 py-3 flex items-center justify-between;
+  }
+
+  .project-bar-stripe {
+    @apply h-1;
+  }
+
+  .tasks-table {
+    @apply w-full text-sm;
+    border-collapse: collapse;
+  }
+
+  .tasks-table th {
+    @apply text-left px-3 py-2 text-xs font-semibold uppercase tracking-[0.05em] text-text-muted border-b border-border;
+  }
+
+  .tasks-table td {
+    @apply px-3 py-2.5 border-b border-border text-text;
+  }
+
+  .tasks-table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .tasks-table tr:hover td {
+    @apply bg-bg;
+  }
+
+  @media (max-width: 640px) {
+    .tasks-table .col-project,
+    .tasks-table .col-status {
+      @apply hidden;
+    }
+  }
+}

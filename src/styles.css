@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@import "./styles/base/theme.css";
+@import "./styles/base/base.css";
+@import "./styles/base/typography.css";
+
+@import "./styles/components/buttons.css";
+@import "./styles/components/inputs.css";
+@import "./styles/components/badges.css";
+@import "./styles/components/cards.css";
+@import "./styles/components/layout.css";
+@import "./styles/components/board.css";
+@import "./styles/components/analytics.css";

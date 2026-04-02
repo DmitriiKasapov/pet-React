@@ -1,0 +1,17 @@
+@layer components {
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-xl text-xs font-medium whitespace-nowrap;
+  }
+
+  .badge-planning {
+    @apply bg-status-planning text-status-planning-text;
+  }
+
+  .badge-progress {
+    @apply bg-status-progress text-status-progress-text;
+  }
+
+  .badge-done {
+    @apply bg-status-done text-status-done-text;
+  }
+}
